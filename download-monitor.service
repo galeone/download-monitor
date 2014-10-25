@@ -1,0 +1,10 @@
+[Unit]
+Description=download-monitor - Monitors your download folder and organizes its contents
+
+[Service]
+Type=simple
+ExecStart=/path/of/monitor.sh
+ExecStop=/usr/bin/env bash -c "/bin/kill -s QUIT $(ps aux | grep monitor.sh | grep --invert-match grep | awk '{print $2}')"
+
+[Install]
+WantedBy=default.target
